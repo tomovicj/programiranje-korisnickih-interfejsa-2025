@@ -1,6 +1,4 @@
-import { Component, signal } from '@angular/core';
-import { QuestionService } from '../../services/question';
-import { Question } from '../../models/question';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +6,4 @@ import { Question } from '../../models/question';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
-  protected webData = signal<Question[]>([]);
-  protected webError = signal<any>(null);
-
-  constructor() {
-    QuestionService.getAllAdmissionQuestions()
-      .then((res) => this.webData.set(res.data))
-      .catch((e) => this.webError.set(e));
-  }
-}
+export class Home {}

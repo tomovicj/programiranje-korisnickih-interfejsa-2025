@@ -12,7 +12,7 @@ const client = axios.create({
 });
 
 export class QuestionService {
-  static async getAllAdmissionQuestions() {
-    return await client.get<Question[]>('/category/upis');
+  static async getAdmissionQuestions(search?: string) {
+    return await client.get<Question[]>(`/category/upis?search=${search}`);
   }
 }

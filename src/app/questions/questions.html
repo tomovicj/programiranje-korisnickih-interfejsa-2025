@@ -1,0 +1,40 @@
+@if (webData().length === 0) {
+    <div class="loading">
+        <h1>Podaci se ucitavaju!</h1>
+        <p>Molim sacekajte dok se podaci preuzimaju sa servera</p>
+    </div>
+} @else {
+    <div class="card mb-3">
+        <div class="card-body">
+            <label for="searchField" class="form-label">
+                <h5>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search:
+                </h5>
+            </label>
+            <input type="text" id="searchField" class="form-control" [(ngModel)]="search" (keyup)="loadQuestions()" >
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5>Admission Questions</h5>
+        </div>
+        <div class="card-body">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                @for (question of webData(); track question.questionId) {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#flush-collapse' + question.questionId" aria-expanded="false" [attr.aria-controls]="'flush-collapse' + question.questionId">
+                                {{question.text}}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse{{question.questionId}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" [innerHTML]="linkify(question.answer)"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

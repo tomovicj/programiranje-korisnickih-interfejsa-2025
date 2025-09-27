@@ -1,0 +1,42 @@
+<div class="card w-50 mx-auto">
+    <div class="card-header">
+        <h5>Signup</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first-name" formControlName="firstName">
+            </div>
+            <div class="mb-3">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last-name" formControlName="lastName">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone-number" formControlName="phoneNumber">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="mb-3">
+                <label for="repeat-password" class="form-label">Repeat Password</label>
+                <input type="password" class="form-control" id="repeat-password" formControlName="repeatPassword">
+            </div>
+            <div class="mb-3">
+                <label for="favorite-destination" class="form-label">Favorite Destination</label>
+                <select class="form-select" id="favorite-destination" formControlName="favoriteDestination">
+                    @for (destination of destinations(); track $index) {
+                        <option [value]="destination">{{destination}}</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
