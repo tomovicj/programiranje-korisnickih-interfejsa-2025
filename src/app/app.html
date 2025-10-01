@@ -28,6 +28,33 @@
             About
           </a>
         </li>
+        @if (hasAuth()) {
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">
+            <i class="fa-solid fa-circle-info"></i>
+            Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">
+            <i class="fa-solid fa-circle-info"></i>
+            Logout
+          </a>
+        </li>
+        } @else {
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">
+            <i class="fa-solid fa-circle-info"></i>
+            Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">
+            <i class="fa-solid fa-circle-info"></i>
+            Signup
+          </a>
+        </li>
+        }
       </ul>
     </div>
   </div>
